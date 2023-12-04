@@ -18,8 +18,6 @@ pub use sys::mbedtls_aria_self_test as aria_self_test;
 pub use sys::mbedtls_aria_setkey_dec as aria_setkey_dec;
 pub use sys::mbedtls_aria_setkey_enc as aria_setkey_enc;
 pub use sys::mbedtls_asn1_find_named_data as asn1_find_named_data;
-#[cfg(not(any(esp_idf_version_full = "5.0.2", esp_idf_version_full = "5.1.0")))]
-pub use sys::mbedtls_asn1_free_named_data as asn1_free_named_data;
 pub use sys::mbedtls_asn1_free_named_data_list as asn1_free_named_data_list;
 #[cfg(not(esp_idf_version_minor = "0"))]
 pub use sys::mbedtls_asn1_free_named_data_list_shallow as asn1_free_named_data_list_shallow;
@@ -324,8 +322,6 @@ pub use sys::mbedtls_md_info_from_string as md_info_from_string;
 pub use sys::mbedtls_md_info_from_type as md_info_from_type;
 pub use sys::mbedtls_md_init as md_init;
 pub use sys::mbedtls_md_list as md_list;
-#[cfg(not(esp_idf_version_full = "5.1.0"))]
-pub use sys::mbedtls_md_process as md_process;
 pub use sys::mbedtls_md_setup as md_setup;
 pub use sys::mbedtls_md_starts as md_starts;
 pub use sys::mbedtls_md_update as md_update;
@@ -453,11 +449,6 @@ pub use sys::mbedtls_pk_write_pubkey as pk_write_pubkey;
 pub use sys::mbedtls_pk_write_pubkey_der as pk_write_pubkey_der;
 pub use sys::mbedtls_pk_write_pubkey_pem as pk_write_pubkey_pem;
 pub use sys::mbedtls_pkcs12_derivation as pkcs12_derivation;
-pub use sys::mbedtls_pkcs12_pbe as pkcs12_pbe;
-pub use sys::mbedtls_pkcs5_pbes2 as pkcs5_pbes2;
-#[cfg(not(any(esp_idf_version_full = "5.0.2", esp_idf_version_full = "5.1.0")))]
-pub use sys::mbedtls_pkcs5_pbkdf2_hmac as pkcs5_pbkdf2_hmac;
-#[cfg(any(esp_idf_version_full = "5.0.2", esp_idf_version_full = "5.1.0"))]
 pub use sys::mbedtls_pkcs5_pbkdf2_hmac_ext as pkcs5_pbkdf2_hmac_ext;
 pub use sys::mbedtls_pkcs5_self_test as pkcs5_self_test;
 pub use sys::mbedtls_platform_gmtime_r as platform_gmtime_r;
@@ -728,9 +719,6 @@ pub use sys::mbedtls_x509write_crt_set_issuer_name as x509write_crt_set_issuer_n
 pub use sys::mbedtls_x509write_crt_set_key_usage as x509write_crt_set_key_usage;
 pub use sys::mbedtls_x509write_crt_set_md_alg as x509write_crt_set_md_alg;
 pub use sys::mbedtls_x509write_crt_set_ns_cert_type as x509write_crt_set_ns_cert_type;
-#[cfg(not(esp_idf_version_full = "5.1.0"))]
-pub use sys::mbedtls_x509write_crt_set_serial as x509write_crt_set_serial;
-#[cfg(esp_idf_version_full = "5.1.0")]
 pub use sys::mbedtls_x509write_crt_set_serial_raw as x509write_crt_set_serial_raw;
 pub use sys::mbedtls_x509write_crt_set_subject_key as x509write_crt_set_subject_key;
 pub use sys::mbedtls_x509write_crt_set_subject_key_identifier as x509write_crt_set_subject_key_identifier;
@@ -1127,11 +1115,7 @@ pub use sys::mbedtls_ssl_states_MBEDTLS_SSL_SERVER_HELLO as SSL_SERVER_HELLO;
 pub use sys::mbedtls_ssl_states_MBEDTLS_SSL_SERVER_HELLO_DONE as SSL_SERVER_HELLO_DONE;
 pub use sys::mbedtls_ssl_states_MBEDTLS_SSL_SERVER_HELLO_VERIFY_REQUEST_SENT as SSL_SERVER_HELLO_VERIFY_REQUEST_SENT;
 pub use sys::mbedtls_ssl_states_MBEDTLS_SSL_SERVER_KEY_EXCHANGE as SSL_SERVER_KEY_EXCHANGE;
-#[cfg(not(any(esp_idf_version_full = "5.0.2", esp_idf_version_full = "5.1.0")))]
-pub use sys::mbedtls_ssl_states_MBEDTLS_SSL_SERVER_NEW_SESSION_TICKET as SSL_SERVER_NEW_SESSION_TICKET;
-#[cfg(not(esp_idf_version_minor = "0"))]
 pub use sys::mbedtls_ssl_states_MBEDTLS_SSL_TLS1_3_NEW_SESSION_TICKET as SSL_SERVER_NEW_SESSION_TICKETSSL_TLS1_3_NEW_SESSION_TICKET;
-#[cfg(not(esp_idf_version_minor = "0"))]
 pub use sys::mbedtls_ssl_states_MBEDTLS_SSL_TLS1_3_NEW_SESSION_TICKET_FLUSH as SSL_SERVER_NEW_SESSION_TICKETSSL_TLS1_3_NEW_SESSION_TICKET_FLUSH;
 pub use sys::mbedtls_tls_prf_types_MBEDTLS_SSL_HKDF_EXPAND_SHA256 as SSL_HKDF_EXPAND_SHA256;
 pub use sys::mbedtls_tls_prf_types_MBEDTLS_SSL_HKDF_EXPAND_SHA384 as SSL_HKDF_EXPAND_SHA384;
@@ -1836,7 +1820,6 @@ pub const CCM_STAR_DECRYPT: i32 = sys::MBEDTLS_CCM_STAR_DECRYPT as i32;
 pub const CCM_STAR_ENCRYPT: i32 = sys::MBEDTLS_CCM_STAR_ENCRYPT as i32;
 pub const AES_BLOCK_SIZE: i32 = sys::MBEDTLS_AES_BLOCK_SIZE as i32;
 pub const DES3_BLOCK_SIZE: i32 = sys::MBEDTLS_DES3_BLOCK_SIZE as i32;
-pub const CIPHER_BLKSIZE_MAX: i32 = sys::MBEDTLS_CIPHER_BLKSIZE_MAX as i32;
 pub const PSA_BUILTIN_ALG_CCM: i32 = sys::MBEDTLS_PSA_BUILTIN_ALG_CCM as i32;
 pub const PSA_BUILTIN_ALG_CCM_STAR_NO_TAG: i32 =
     sys::MBEDTLS_PSA_BUILTIN_ALG_CCM_STAR_NO_TAG as i32;
@@ -1845,15 +1828,10 @@ pub const PSA_BUILTIN_ALG_ECDH: i32 = sys::MBEDTLS_PSA_BUILTIN_ALG_ECDH as i32;
 pub const PSA_BUILTIN_ALG_ECDSA: i32 = sys::MBEDTLS_PSA_BUILTIN_ALG_ECDSA as i32;
 pub const PSA_BUILTIN_ALG_DETERMINISTIC_ECDSA: i32 =
     sys::MBEDTLS_PSA_BUILTIN_ALG_DETERMINISTIC_ECDSA as i32;
-pub const PSA_BUILTIN_KEY_TYPE_ECC_KEY_PAIR: i32 =
-    sys::MBEDTLS_PSA_BUILTIN_KEY_TYPE_ECC_KEY_PAIR as i32;
 pub const PSA_BUILTIN_KEY_TYPE_ECC_PUBLIC_KEY: i32 =
     sys::MBEDTLS_PSA_BUILTIN_KEY_TYPE_ECC_PUBLIC_KEY as i32;
 pub const PSA_BUILTIN_ALG_GCM: i32 = sys::MBEDTLS_PSA_BUILTIN_ALG_GCM as i32;
 pub const PSA_BUILTIN_ALG_HMAC: i32 = sys::MBEDTLS_PSA_BUILTIN_ALG_HMAC as i32;
-// pub const PSA_BUILTIN_ALG_HKDF: i32 = sys::MBEDTLS_PSA_BUILTIN_ALG_HKDF as i32;
-// pub const PSA_BUILTIN_ALG_HKDF_EXTRACT: i32 = sys::MBEDTLS_PSA_BUILTIN_ALG_HKDF_EXTRACT as i32;
-// pub const PSA_BUILTIN_ALG_HKDF_EXPAND: i32 = sys::MBEDTLS_PSA_BUILTIN_ALG_HKDF_EXPAND as i32;
 pub const PSA_BUILTIN_ALG_TLS12_PRF: i32 = sys::MBEDTLS_PSA_BUILTIN_ALG_TLS12_PRF as i32;
 pub const PSA_BUILTIN_ALG_TLS12_PSK_TO_MS: i32 =
     sys::MBEDTLS_PSA_BUILTIN_ALG_TLS12_PSK_TO_MS as i32;
@@ -1864,8 +1842,6 @@ pub const PSA_BUILTIN_ALG_RSA_PKCS1V15_SIGN: i32 =
     sys::MBEDTLS_PSA_BUILTIN_ALG_RSA_PKCS1V15_SIGN as i32;
 pub const PSA_BUILTIN_ALG_RSA_OAEP: i32 = sys::MBEDTLS_PSA_BUILTIN_ALG_RSA_OAEP as i32;
 pub const PSA_BUILTIN_ALG_RSA_PSS: i32 = sys::MBEDTLS_PSA_BUILTIN_ALG_RSA_PSS as i32;
-pub const PSA_BUILTIN_KEY_TYPE_RSA_KEY_PAIR: i32 =
-    sys::MBEDTLS_PSA_BUILTIN_KEY_TYPE_RSA_KEY_PAIR as i32;
 pub const PSA_BUILTIN_KEY_TYPE_RSA_PUBLIC_KEY: i32 =
     sys::MBEDTLS_PSA_BUILTIN_KEY_TYPE_RSA_PUBLIC_KEY as i32;
 pub const PSA_BUILTIN_ALG_SHA_1: i32 = sys::MBEDTLS_PSA_BUILTIN_ALG_SHA_1 as i32;
