@@ -17,12 +17,12 @@ documentation = "https://docs.rs/mbedtls/"
 keywords = ["MbedTLS","mbed","TLS","SSL","cryptography"]
 
 [dependencies]
-bitflags = "1"
+bitflags = "2.5.0"
 core_io = { version = "0.1", features = ["collections"], optional = true }
-esp-idf-sys = "0.34.1"
+esp-idf-sys = "0.35.0"
 spin = { version = "0.9.4", default-features = false, optional = true }
-byteorder = { version = "1.4.3", default-features = false }
-yasna = { version = "0.5.1", optional = true, features = ["num-bigint", "bit-vec"] }
+byteorder = { version = "1.5.0", default-features = false }
+yasna = { version = "0.5.2", optional = true, features = ["num-bigint", "bit-vec"] }
 num-bigint = { version = "0.4.3", optional = true }
 bit-vec = { version = "0.6.3", optional = true }
 block-modes = { version = "0.9.1", optional = true }
@@ -42,7 +42,7 @@ features = ["custom_printf", "trusted_cert_callback", "threading"]
 path = "../mbedtls-sys-espidf"
 
 [dev-dependencies]
-libc = "0.2.139"
+libc = "0.2.155"
 rand = "0.8.5"
 serde_cbor = "0.6"
 hex = "0.3"
@@ -50,8 +50,8 @@ matches = "0.1.9"
 hyper = { version = "0.10.16", default-features = false }
 
 [build-dependencies]
-anyhow = "1.0.68"
-embuild = "0.31.0"
+anyhow = "1.0.86"
+embuild = "0.32.0"
 
 [features]
 # Features are documented in the README
