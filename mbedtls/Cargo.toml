@@ -19,7 +19,7 @@ keywords = ["MbedTLS","mbed","TLS","SSL","cryptography"]
 [dependencies]
 bitflags = "1"
 core_io = { version = "0.1", features = ["collections"], optional = true }
-esp-idf-sys = "0.33.0"
+esp-idf-sys = "0.34.1"
 spin = { version = "0.9.4", default-features = false, optional = true }
 byteorder = { version = "1.4.3", default-features = false }
 yasna = { version = "0.5.1", optional = true, features = ["num-bigint", "bit-vec"] }
@@ -29,7 +29,7 @@ block-modes = { version = "0.9.1", optional = true }
 rc2 = { version = "0.8.1", optional = true }
 cfg-if = "1.0.0"
 rand_core = "0.6.4"
-embedded-io = { version = "0.4.0", optional = true }
+embedded-io = { version = "0.6.1", optional = true }
 
 [target.x86_64-fortanix-unknown-sgx.dependencies]
 rs-libc = "0.2.3"

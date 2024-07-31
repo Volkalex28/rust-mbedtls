@@ -266,16 +266,16 @@ pub fn pbkdf2_hmac(
         };
     }
 
-    #[cfg(not(any(esp_idf_version_full = "5.0.2", esp_idf_version_full = "5.1.0")))]
+    // #[cfg(not(any(esp_idf_version_full = "5.0.2", esp_idf_version_full = "5.1.0")))]
+    // unsafe {
+    //     let md = Into::<Option<MdInfo>>::into(md).ok_or(Error::MdBadInputData)?;
+    //     let mut ctx = Md::init();
+    //     md_setup((&mut ctx).into(), md.into(), 1).into_result()?;
+    //     hmac!(pkcs5_pbkdf2_hmac, (&mut ctx));
+    // }
+    // #[cfg(any(esp_idf_version_full = "5.0.2", esp_idf_version_full = "5.1.0"))]
     unsafe {
-        let md = Into::<Option<MdInfo>>::into(md).ok_or(Error::MdBadInputData)?;
-        let mut ctx = Md::init();
-        md_setup((&mut ctx).into(), md.into(), 1).into_result()?;
-        hmac!(pkcs5_pbkdf2_hmac, (&mut ctx));
-    }
-    #[cfg(any(esp_idf_version_full = "5.0.2", esp_idf_version_full = "5.1.0"))]
-    unsafe {
-        hmac!(pkcs5_pbkdf2_hmac_ext, md)
+        hmac!(pkcs5_pbkdf2_hmac, md)
     };
 
     Ok(())

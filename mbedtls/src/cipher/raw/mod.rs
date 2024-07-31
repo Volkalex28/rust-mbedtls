@@ -337,7 +337,7 @@ impl Cipher {
 
     pub fn update(&mut self, indata: &[u8], outdata: &mut [u8]) -> Result<usize> {
         // Check that minimum required space is available in outdata buffer
-        let reqd_size = if unsafe { *self.inner.private_cipher_info }.private_mode == MODE_ECB {
+        let reqd_size = if unsafe { *self.inner.private_cipher_info }.private_mode() == MODE_ECB {
             self.block_size()
         } else {
             indata.len() + self.block_size()
@@ -389,23 +389,23 @@ impl Cipher {
 
     // Utility function to get block size for the selected / setup cipher_info
     pub fn block_size(&self) -> usize {
-        unsafe { (*self.inner.private_cipher_info).private_block_size as usize }
+        unsafe { (*self.inner.private_cipher_info).private_block_size() as usize }
     }
 
     // Utility function to get IV size for the selected / setup cipher_info
     pub fn iv_size(&self) -> usize {
-        unsafe { (*self.inner.private_cipher_info).private_iv_size as usize }
+        unsafe { (*self.inner.private_cipher_info).private_iv_size() as usize }
     }
 
     pub fn cipher_mode(&self) -> CipherMode {
-        unsafe { (*self.inner.private_cipher_info).private_mode.into() }
+        unsafe { (*self.inner.private_cipher_info).private_mode().into() }
     }
 
     // Utility function to get mdoe for the selected / setup cipher_info
     pub fn is_authenticated(&self) -> bool {
         unsafe {
-            if (*self.inner.private_cipher_info).private_mode == MODE_GCM
-                || (*self.inner.private_cipher_info).private_mode == MODE_CCM
+            if (*self.inner.private_cipher_info).private_mode() == MODE_GCM
+                || (*self.inner.private_cipher_info).private_mode() == MODE_CCM
             {
                 return true;
             } else {
@@ -572,7 +572,7 @@ impl Cipher {
         // return an empty slice, it doesn't panic.
         let mut total_len = 0;
 
-        if unsafe { *self.inner.private_cipher_info }.private_mode == MODE_ECB {
+        if unsafe { *self.inner.private_cipher_info }.private_mode() == MODE_ECB {
             // ECB mode requires single-block updates
             for chunk in indata.chunks(self.block_size()) {
                 let len = self.update(chunk, &mut outdata[total_len..])?;
